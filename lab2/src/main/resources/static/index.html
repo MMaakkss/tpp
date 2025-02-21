@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script>
+        const calculate = () => {
+            document.getElementById('result').innerHTML = xhr.responseText
+            const value = document.getElementById('value').value;
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '/calculate?expression=' + encodeURIComponent(value), true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('result').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    Enter value: <input type="text" id="value">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+</body>
+</html>
